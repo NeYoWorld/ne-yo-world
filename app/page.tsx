@@ -7,6 +7,7 @@ import {
   type Language,
 } from "./context/LanguageContext";
 
+import { Globe } from "./components/Globe";
 import SiteHeader from "./components/SiteHeader";
 
 import {
@@ -313,6 +314,15 @@ const homeCountryCardData: Record<
 export default function Home() {
   const { language } = useLanguage();
 
+  const [
+    globeMounted,
+    setGlobeMounted,
+  ] = useState(false);
+
+  useEffect(() => {
+    setGlobeMounted(true);
+  }, []);
+
   const t =
     translations[language];
 
@@ -572,7 +582,7 @@ export default function Home() {
 
           {/* DIREITA */}
 
-          <div className="relative hidden min-h-[580px] items-center justify-center overflow-visible lg:flex lg:-translate-y-10">
+          <div className="relative flex min-h-[580px] items-center justify-center overflow-visible lg:-translate-y-10">
 
             {/* SILHUETA */}
 
@@ -676,7 +686,13 @@ export default function Home() {
                 xl:scale-[1.07]
               "
             >
-              <div className="relative min-h-[560px] w-full" />
+              <div className="relative min-h-[560px] w-full">
+                {globeMounted ? (
+                  <Globe />
+                ) : (
+                  <div className="h-[500px] w-full" />
+                )}
+              </div>
             </div>
 
 
