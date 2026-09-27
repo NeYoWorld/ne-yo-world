@@ -2435,7 +2435,7 @@ export default function AdminPage() {
     );
   }
 
-  function toggleWorldMessageTranslations(message: WorldMessage) {
+  async function toggleWorldMessageTranslations(message: WorldMessage) {
     const isOpening = !openWorldMessageTranslations[message.id];
 
     setOpenWorldMessageTranslations((current) => ({
@@ -2446,7 +2446,7 @@ export default function AdminPage() {
     if (isOpening && !worldMessageTranslationDrafts[message.id]) {
       const draft: Record<string, string> = {};
 
-      WORLD_MESSAGE_LANGUAGES.forEach(({ code }) => {
+      [{ code: "en" }].forEach(({ code }) => {
         const existing = translationForMessage(message.id, code);
         draft[code] = existing?.translated_text ?? "";
       });
@@ -2455,6 +2455,34 @@ export default function AdminPage() {
         ...current,
         [message.id]: draft,
       }));
+      if (message.original_language !== "en" && !draft.en) {
+  try {
+    const response = await fetch("/api/world-messages/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messageId: message.id,
+        targetLanguage: "en",
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.translatedText) {
+      setWorldMessageTranslationDrafts((current) => ({
+        ...current,
+        [message.id]: {
+          ...(current[message.id] ?? {}),
+          en: result.translatedText,
+        },
+      }));
+    }
+  } catch {
+    // The admin can still enter the English translation manually.
+  }
+}
     }
 
     setWorldMessageTranslationSuccessId(null);
@@ -2483,15 +2511,14 @@ export default function AdminPage() {
     setWorldMessageTranslationSavingId(message.id);
 
     const draft = worldMessageTranslationDrafts[message.id] ?? {};
-    const rows = WORLD_MESSAGE_LANGUAGES
-      .filter(({ code }) => code !== message.original_language)
-      .map(({ code }) => ({
-        message_id: message.id,
-        language_code: code,
-        translated_text: (draft[code] ?? "").trim(),
-        is_published: true,
-      }))
-      .filter((row) => row.translated_text.length > 0);
+   const rows = message.original_language === "en"
+  ? []
+  : [{
+      message_id: message.id,
+      language_code: "en",
+      translated_text: (draft.en ?? "").trim(),
+      is_published: true,
+    }];
 
     if (rows.length === 0) {
       setWorldMessageTranslationSavingId(null);
@@ -4627,7 +4654,7 @@ export default function AdminPage() {
                         </p>
                       )}
 
-                      {message.status === "approved" && (
+                      {(message.status === "pending" || message.status === "approved") && (
                         <div className="mt-6 border-t border-[#D4AF37]/10 pt-5">
                           <div className="flex flex-wrap items-center justify-between gap-4">
                             <div>
@@ -4657,7 +4684,7 @@ export default function AdminPage() {
                               </p>
 
                               <div className="grid gap-4 lg:grid-cols-2">
-                                {WORLD_MESSAGE_LANGUAGES
+                                {[{ code: "en", label: "EN" }]
                                   .filter(({ code }) => code !== message.original_language)
                                   .map(({ code, label }) => (
                                     <div key={code}>
