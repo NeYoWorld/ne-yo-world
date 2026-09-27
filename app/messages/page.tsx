@@ -304,6 +304,7 @@ const messageUi = {
     noTranslation: "Translation not available yet.",
     translating: "Translating...",
     translationError: "Could not translate this message. Please try again.",
+    englishOnly: "Translation available in English only.",
   },
   PT: {
     sending: "A enviar...",
@@ -317,6 +318,7 @@ const messageUi = {
     noTranslation: "Tradução ainda não disponível.",
     translating: "A traduzir...",
     translationError: "Não foi possível traduzir esta mensagem. Tenta novamente.",
+    englishOnly: "Tradução disponível apenas em inglês.",
   },
   ES: {
     sending: "Enviando...",
@@ -330,6 +332,7 @@ const messageUi = {
     noTranslation: "La traducción aún no está disponible.",
     translating: "Traduciendo...",
     translationError: "No se pudo traducir este mensaje. Inténtalo de nuevo.",
+    englishOnly: "La traducción está disponible solo en inglés.",
   },
   FR: {
     sending: "Envoi...",
@@ -343,6 +346,7 @@ const messageUi = {
     noTranslation: "La traduction n’est pas encore disponible.",
     translating: "Traduction...",
     translationError: "Impossible de traduire ce message. Réessayez.",
+    englishOnly: "La traduction est disponible uniquement en anglais.",
   },
   DE: {
     sending: "Wird gesendet...",
@@ -356,6 +360,7 @@ const messageUi = {
     noTranslation: "Übersetzung noch nicht verfügbar.",
     translating: "Wird übersetzt...",
     translationError: "Diese Nachricht konnte nicht übersetzt werden. Bitte versuche es erneut.",
+    englishOnly: "Die Übersetzung ist nur auf Englisch verfügbar.",
   },
   IT: {
     sending: "Invio...",
@@ -369,6 +374,7 @@ const messageUi = {
     noTranslation: "Traduzione non ancora disponibile.",
     translating: "Traduzione...",
     translationError: "Impossibile tradurre questo messaggio. Riprova.",
+    englishOnly: "La traduzione è disponibile solo in inglese.",
   },
   JA: {
     sending: "送信中...",
@@ -382,6 +388,7 @@ const messageUi = {
     noTranslation: "翻訳はまだ利用できません。",
     translating: "翻訳中...",
     translationError: "このメッセージを翻訳できませんでした。もう一度お試しください。",
+    englishOnly: "翻訳は英語のみ利用できます。",
   },
 } as const;
 
@@ -514,6 +521,7 @@ export default function MessagesPage() {
   }
 
   async function toggleTranslation(item: Message) {
+    const targetLanguage = "en";
     const isCurrentlyOpen = Boolean(openTranslations[item.id]);
 
     if (isCurrentlyOpen) {
@@ -530,7 +538,7 @@ export default function MessagesPage() {
     }));
 
     const existingTranslation = item.world_message_translations?.find(
-      (entry) => entry.language_code === currentLanguage
+      (entry) => entry.language_code === targetLanguage
     );
 
     if (existingTranslation?.translated_text) {
@@ -560,7 +568,7 @@ export default function MessagesPage() {
         body: JSON.stringify({
           messageId: item.id,
           sourceLanguage: item.original_language,
-          targetLanguage: currentLanguage,
+          targetLanguage: targetLanguage,
           originalText: item.original_text,
         }),
       });
@@ -599,7 +607,7 @@ export default function MessagesPage() {
 
           const otherTranslations =
             messageItem.world_message_translations?.filter(
-              (entry) => entry.language_code !== currentLanguage
+              (entry) => entry.language_code !== targetLanguage
             ) ?? [];
 
           return {
@@ -607,7 +615,7 @@ export default function MessagesPage() {
             world_message_translations: [
               ...otherTranslations,
               {
-                language_code: currentLanguage,
+                language_code: targetLanguage,
                 translated_text: translatedText,
               },
             ],
@@ -935,9 +943,9 @@ export default function MessagesPage() {
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {messages.slice(0, visibleCount).map((item) => {
                 const translation = item.world_message_translations?.find(
-                  (entry) => entry.language_code === currentLanguage
-                );
-                const canTranslate = item.original_language !== currentLanguage;
+  (entry) => entry.language_code === "en"
+);
+const canTranslate = item.original_language !== "en";
                 const isOpen = Boolean(openTranslations[item.id]);
 
                 return (
@@ -969,6 +977,9 @@ export default function MessagesPage() {
 
                     {canTranslate && (
                       <div className="mt-7 border-t border-white/5 pt-5">
+                        <p className="mb-3 text-[9px] leading-5 text-white/30">
+  {ui.englishOnly}
+</p>
                         <button
                           type="button"
                           onClick={() => toggleTranslation(item)}

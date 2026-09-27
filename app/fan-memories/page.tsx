@@ -56,6 +56,7 @@ const COPY: Record<string, any> = {
     translating: "Translating…",
     original: "Original",
     translationError: "Translation is temporarily unavailable.",
+    englishOnly: "Translation available in English only.",
     jumpMemories: "Explore memories",
     jumpShare: "Share your memory",
     loadMore: "Load more",
@@ -90,6 +91,7 @@ const COPY: Record<string, any> = {
     translating: "A traduzir…",
     original: "Original",
     translationError: "A tradução está temporariamente indisponível.",
+    englishOnly: "Tradução disponível apenas em inglês.",
     jumpMemories: "Explorar memórias",
     jumpShare: "Partilha a tua memória",
     loadMore: "Ver mais",
@@ -124,6 +126,7 @@ const COPY: Record<string, any> = {
     translating: "Traduciendo…",
     original: "Original",
     translationError: "La traducción no está disponible temporalmente.",
+    englishOnly: "La traducción está disponible solo en inglés.",
     jumpMemories: "Explorar recuerdos",
     jumpShare: "Comparte tu recuerdo",
     loadMore: "Ver más",
@@ -158,6 +161,7 @@ const COPY: Record<string, any> = {
     translating: "Traduction…",
     original: "Original",
     translationError: "La traduction est temporairement indisponible.",
+   englishOnly: "La traduction est disponible uniquement en anglais.",
     jumpMemories: "Explorer les souvenirs",
     jumpShare: "Partagez votre souvenir",
     loadMore: "Voir plus",
@@ -192,6 +196,7 @@ const COPY: Record<string, any> = {
     translating: "Wird übersetzt…",
     original: "Original",
     translationError: "Die Übersetzung ist vorübergehend nicht verfügbar.",
+    englishOnly: "Die Übersetzung ist nur auf Englisch verfügbar.",
     jumpMemories: "Erinnerungen entdecken",
     jumpShare: "Teile deine Erinnerung",
     loadMore: "Mehr anzeigen",
@@ -226,6 +231,7 @@ const COPY: Record<string, any> = {
     translating: "Traduzione…",
     original: "Originale",
     translationError: "La traduzione è temporaneamente non disponibile.",
+    englishOnly: "La traduzione è disponibile solo in inglese.",
     jumpMemories: "Esplora i ricordi",
     jumpShare: "Condividi il tuo ricordo",
     loadMore: "Mostra altro",
@@ -260,6 +266,7 @@ const COPY: Record<string, any> = {
     translating: "翻訳中…",
     original: "原文",
     translationError: "翻訳は現在利用できません。",
+    englishOnly: "翻訳は英語のみ利用できます。",
     jumpMemories: "思い出を見る",
     jumpShare: "思い出をシェア",
     loadMore: "もっと見る",
@@ -368,7 +375,7 @@ export default function FanMemoriesPage() {
   }, [lang]);
 
   async function translateMemory(memory: PublicMemory) {
-    const target = String(lang || "EN").toLowerCase().slice(0, 2);
+   const target = "en";
 
     setTranslationErrors((current) => ({ ...current, [memory.id]: "" }));
     setTranslatingId(memory.id);
@@ -612,6 +619,9 @@ export default function FanMemoriesPage() {
                     </div>
                   )}
 
+                  <div className="mt-4 text-[11px] leading-5 text-white/40">
+  {t.englishOnly}
+</div>
                   <div className="mt-5 flex items-center gap-3">
                     <button
                       type="button"

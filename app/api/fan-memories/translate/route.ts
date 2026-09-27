@@ -50,6 +50,9 @@ export async function POST(request: NextRequest) {
 
   if (!memoryId) return json("Memory ID is required.");
   if (!ALLOWED.has(targetLanguage)) return json("Unsupported language.");
+  if (targetLanguage !== "en") {
+  return json("Translations are available in English only.", 400);
+}
 
   // Important: fetch original story from the database.
   // Never trust client-supplied story/source language.

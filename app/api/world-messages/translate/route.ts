@@ -80,6 +80,9 @@ export async function POST(request: Request) {
     if (!SUPPORTED_LANGUAGES.has(targetLanguage)) {
       return jsonError("Unsupported target language.", 400);
     }
+    if (targetLanguage !== "en") {
+  return jsonError("Translations are available in English only.", 400);
+}
 
     const supabase = createClient(
       supabaseUrl,
