@@ -940,7 +940,7 @@ export default function MessagesPage() {
               {ui.empty}
             </p>
           ) : (
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
+            <div className="mt-10 grid items-start gap-5 md:grid-cols-2">
               {messages.slice(0, visibleCount).map((item) => {
                 const translation = item.world_message_translations?.find(
   (entry) => entry.language_code === "en"
