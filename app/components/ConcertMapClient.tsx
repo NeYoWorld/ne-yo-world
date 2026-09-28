@@ -828,13 +828,17 @@ export default function ConcertMapClient({
         }
 
         .leaflet-control-attribution {
-          background: rgba(5, 6, 7, 0.78) !important;
-          color: rgba(255, 255, 255, 0.45) !important;
-        }
+  background: rgba(5, 6, 7, 0.55) !important;
+  color: rgba(255, 255, 255, 0.28) !important;
+  font-size: 8px !important;
+  line-height: 1.2 !important;
+  padding: 2px 4px !important;
+}
 
-        .leaflet-control-attribution a {
-          color: rgba(212, 175, 55, 0.7) !important;
-        }
+.leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.38) !important;
+  text-decoration: none !important;
+}
 
       `}</style>
 
