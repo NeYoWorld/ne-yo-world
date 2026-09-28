@@ -1450,6 +1450,10 @@ export default function AdminPage() {
   const [fanMemoriesError, setFanMemoriesError] = useState("");
   const [fanMemoryFilter, setFanMemoryFilter] = useState<"all" | ApplicationStatus>("pending");
   const [fanMemoryProcessingId, setFanMemoryProcessingId] = useState<string | null>(null);
+  const [fanMemoryTranslations, setFanMemoryTranslations] = useState<Record<string, string>>({});
+const [fanMemoryTranslationLoadingId, setFanMemoryTranslationLoadingId] = useState<string | null>(null);
+const [fanMemoryTranslationSavingId, setFanMemoryTranslationSavingId] = useState<string | null>(null);
+const [fanMemoryTranslationSuccessId, setFanMemoryTranslationSuccessId] = useState<string | null>(null);
 
   const [worldNews, setWorldNews] = useState<WorldNewsItem[]>([]);
   const [loadingWorldNews, setLoadingWorldNews] = useState(false);
@@ -1686,7 +1690,25 @@ export default function AdminPage() {
 
     setWorldMessageTranslations((data ?? []) as WorldMessageTranslation[]);
   }
+async function loadFanMemoryTranslations() {
+  const { data, error } = await supabase
+    .from("fan_memory_translations")
+    .select("memory_id, language_code, translated_story")
+    .eq("language_code", "en");
 
+  if (error) {
+    console.error("Fan Memory translations load error:", error);
+    return;
+  }
+
+  const translations: Record<string, string> = {};
+
+  for (const item of data ?? []) {
+    translations[item.memory_id] = item.translated_story ?? "";
+  }
+
+  setFanMemoryTranslations(translations);
+}
   async function loadFanMemories() {
     setLoadingFanMemories(true);
     setFanMemoriesError("");
@@ -1819,6 +1841,7 @@ export default function AdminPage() {
       loadWorldNews();
       loadWorldMessages();
       loadFanMemories();
+      loadFanMemoryTranslations();
       loadWorldMessageTranslations();
     }
   }, [sessionChecked, isAuthenticated, isAdmin]);
@@ -2277,6 +2300,84 @@ export default function AdminPage() {
     );
   }
 
+  async function translateFanMemory(memory: FanMemory) {
+  if (fanMemoryTranslationLoadingId) return;
+
+  setFanMemoriesError("");
+  setFanMemoryTranslationLoadingId(memory.id);
+  setFanMemoryTranslationSuccessId(null);
+
+  try {
+    const response = await fetch("/api/fan-memories/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        memory_id: memory.id,
+target_language: "en",
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      setFanMemoriesError(result.error ?? "Could not translate Fan Memory.");
+      return;
+    }
+
+    const translatedStory =
+      result.translatedStory ?? result.translated_story ?? "";
+
+    setFanMemoryTranslations((current) => ({
+      ...current,
+      [memory.id]: translatedStory,
+    }));
+  } catch {
+    setFanMemoriesError("Could not translate Fan Memory.");
+  } finally {
+    setFanMemoryTranslationLoadingId(null);
+  }
+}
+async function saveFanMemoryTranslation(memory: FanMemory) {
+  if (fanMemoryTranslationSavingId) return;
+
+  setFanMemoriesError("");
+  setFanMemoryTranslationSuccessId(null);
+  setFanMemoryTranslationSavingId(memory.id);
+
+  const translatedStory = (fanMemoryTranslations[memory.id] ?? "").trim();
+
+  if (!translatedStory) {
+    setFanMemoryTranslationSavingId(null);
+    setFanMemoriesError("English translation cannot be empty.");
+    return;
+  }
+
+  const { error } = await supabase
+    .from("fan_memory_translations")
+    .upsert(
+      {
+        memory_id: memory.id,
+        language_code: "en",
+        translated_story: translatedStory,
+      },
+      {
+        onConflict: "memory_id,language_code",
+      }
+    );
+
+  setFanMemoryTranslationSavingId(null);
+
+  if (error) {
+    console.error("Fan Memory translation save error:", error);
+    setFanMemoriesError(`Could not save Fan Memory translation. ${error.message}`);
+    return;
+  }
+
+  await loadFanMemoryTranslations();
+  setFanMemoryTranslationSuccessId(memory.id);
+}
   async function updateFanMemoryStatus(memory: FanMemory, status: ApplicationStatus) {
     if (fanMemoryProcessingId) return;
     setFanMemoriesError("");
@@ -4457,6 +4558,39 @@ export default function AdminPage() {
                       <div className="mt-5 rounded-xl border border-white/8 bg-black/25 p-4">
                         <p className="whitespace-pre-wrap text-sm leading-7 text-white/70">{memory.story}</p>
                       </div>
+
+{memory.original_language !== "en" && (
+  <div className="mt-4 rounded-xl border border-[#D4AF37]/10 bg-black/25 p-4">
+    <div className="flex flex-wrap items-center justify-between gap-3">
+      <p className="text-[8px] font-semibold uppercase tracking-[0.18em] text-[#D4AF37]/70">
+        Tradução · EN
+      </p>
+
+      <button
+        type="button"
+        onClick={() => translateFanMemory(memory)}
+        disabled={fanMemoryTranslationLoadingId === memory.id}
+        className="rounded-lg border border-[#D4AF37]/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[0.14em] text-[#D4AF37] transition hover:border-[#D4AF37]/50 disabled:opacity-40"
+      >
+        {fanMemoryTranslationLoadingId === memory.id ? "A traduzir..." : "Traduzir"}
+      </button>
+    </div>
+
+    <textarea
+      rows={4}
+      maxLength={2000}
+      value={fanMemoryTranslations[memory.id] ?? ""}
+      onChange={(event) =>
+        setFanMemoryTranslations((current) => ({
+          ...current,
+          [memory.id]: event.target.value,
+        }))
+      }
+      className="mt-3 w-full resize-y rounded-xl border border-white/10 bg-[#050607] px-4 py-3 text-sm leading-6 text-white outline-none transition focus:border-[#D4AF37]/45"
+      placeholder="English translation"
+    />
+  </div>
+)}
 
                       {(memory.fan_memory_media ?? []).length > 0 && (
                         <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
