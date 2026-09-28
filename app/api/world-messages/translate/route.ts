@@ -134,12 +134,7 @@ export async function POST(request: Request) {
       return jsonError("Message not found.", 404);
     }
 
-    if (message.status !== "approved") {
-      return jsonError(
-        "This message is not available for translation.",
-        403
-      );
-    }
+    
 
     const sourceLanguage =
       typeof message.original_language === "string"
