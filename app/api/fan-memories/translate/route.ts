@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (memoryError || !memory) return json("Memory not found.", 404);
-  if (memory.status !== "approved") return json("Only approved memories can be translated.", 403);
+ 
 
   const sourceLanguage = String(memory.original_language || "").toLowerCase().slice(0, 2);
 
