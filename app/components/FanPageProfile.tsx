@@ -656,6 +656,8 @@ setJourney(
       ?"/portugal"
       :normalizedCountry==="united-states"||normalizedCountry==="united-states-of-america"||normalizedCountry==="usa"
       ?"/usa"
+      : normalizedCountry === "united-kingdom"
+? "/uk"
       :`/${normalizedCountry}`;
 
   return <main className="min-h-screen bg-[#050607] text-white">

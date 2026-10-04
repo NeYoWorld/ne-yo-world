@@ -567,7 +567,7 @@ export default function CountryPage({
               href="#fan-pages"
               className="rounded-xl px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/55 transition hover:bg-white/5 hover:text-[#D4AF37]"
             >
-              {t.fanPagesTitle}
+              {t.fanPagesLabel}
             </a>
 
             <a
@@ -1096,31 +1096,7 @@ export default function CountryPage({
                         </span>
                       </a>
           
-
-{fanPage.slug &&
-  (fanPage.profilePublished ||
-    process.env.NODE_ENV === "development") && (
-    <a
-      href={`/community/${countrySlug}/${fanPage.slug}`}
-      onClick={(event) => event.stopPropagation()}
-      className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D4AF37] transition hover:text-white"
-    >
-      {language === "PT"
-        ? "Explorar História"
-        : language === "ES"
-        ? "Explorar Historia"
-        : language === "FR"
-        ? "Explorer l’Histoire"
-        : language === "DE"
-        ? "Geschichte entdecken"
-        : language === "IT"
-        ? "Esplora la Storia"
-        : language === "JA"
-        ? "ストーリーを見る"
-        : "Explore Story"}
-      <span aria-hidden="true">→</span>
-    </a>
-  )}
+       
 
                     </div>
 
