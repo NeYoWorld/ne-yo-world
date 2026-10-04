@@ -5,6 +5,8 @@ export type LocalizedText = Record<Language, string>;
 export const ukFanPages = [
   {
     name: "@missindependentlw",
+    slug: "missindependentlw",
+profilePublished: true,
     platform: "Instagram",
     url: "https://www.instagram.com/missindependentlw/",
     since: "2026",
