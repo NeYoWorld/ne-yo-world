@@ -308,6 +308,12 @@ const homeCountryCardData: Record<
     code: "US",
     manualUsernames: [],
   },
+   uk: {
+    code: "UK",
+    manualUsernames: [
+      "@missindependentlw",
+    ],
+  },
 };
 
 
