@@ -26,22 +26,24 @@ const COMMUNITY_SLUGS = [
   "portugal",
   "brazil",
   "usa",
+  "united-kingdom",
 ];
 
 const manualFanPages: Record<string, string[]> = {
   portugal: ["@bestofneyo_"],
   brazil: ["@neyodivooficial"],
   usa: [],
+    "united-kingdom": ["@missindependentlw"],
 };
 
 const localizedCountryNames: Record<Language, Record<string, string>> = {
-  EN: { portugal: "Portugal", brazil: "Brazil", usa: "USA" },
-  PT: { portugal: "Portugal", brazil: "Brasil", usa: "EUA" },
-  ES: { portugal: "Portugal", brazil: "Brasil", usa: "EE. UU." },
-  FR: { portugal: "Portugal", brazil: "Brésil", usa: "États-Unis" },
-  DE: { portugal: "Portugal", brazil: "Brasilien", usa: "USA" },
-  IT: { portugal: "Portogallo", brazil: "Brasile", usa: "Stati Uniti" },
-  JA: { portugal: "ポルトガル", brazil: "ブラジル", usa: "アメリカ合衆国" },
+  EN: { portugal: "Portugal", brazil: "Brazil", usa: "USA", "united-kingdom": "United Kingdom" },
+  PT: { portugal: "Portugal", brazil: "Brasil", usa: "EUA", "united-kingdom": "Reino Unido" },
+  ES: { portugal: "Portugal", brazil: "Brasil", usa: "EE. UU.", "united-kingdom": "Reino Unido" },
+  FR: { portugal: "Portugal", brazil: "Brésil", usa: "États-Unis", "united-kingdom": "Royaume-Uni" },
+  DE: { portugal: "Portugal", brazil: "Brasilien", usa: "USA", "united-kingdom": "Vereinigtes Königreich" },
+  IT: { portugal: "Portogallo", brazil: "Brasile", usa: "Stati Uniti", "united-kingdom": "Regno Unito" },
+  JA: { portugal: "ポルトガル", brazil: "ブラジル", usa: "アメリカ合衆国", "united-kingdom": "イギリス" },
 };
 
 const translations: Record<
@@ -358,7 +360,7 @@ export default function CountriesPage() {
                 (country) => (
                   <Link
                     key={country.id}
-                    href={`/${country.slug}`}
+                    href={country.slug === "united-kingdom" ? "/uk" : `/${country.slug}`}
                     className="group relative overflow-hidden rounded-2xl border border-[#D4AF37]/20 bg-[#08090A] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#D4AF37]/55"
                   >
                     <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-[220px] w-[220px] rounded-full bg-[#D51C24]/5 blur-[80px]" />

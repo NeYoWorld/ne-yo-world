@@ -34,7 +34,14 @@ export const countryDestinations: CountryDestination[] = [
     href: "/usa",
     enabled: true,
   },
-
+{
+  slug: "uk",
+  name: "United Kingdom",
+  lat: 54.5,
+  lon: -3.0,
+  href: "/uk",
+  enabled: true,
+},
   /*
     FUTUROS PAÍSES
 

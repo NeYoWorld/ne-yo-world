@@ -786,6 +786,43 @@ export default function CountryPage({
                             </a>
                           )}
 
+{countrySlug === "uk" &&
+  String(moment.year) === "2024" && (
+    <a
+      href="https://www.youtube.com/watch?v=XBPAGBxXf_o"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group/media mt-7 block w-full max-w-[620px] overflow-hidden rounded-[20px] border border-[#D4AF37]/18 bg-black/30 transition hover:border-[#D4AF37]/40"
+      aria-label="Ne-Yo · Champagne & Roses Tour · UK 2024"
+    >
+      <div className="relative aspect-video overflow-hidden bg-[#090A0B]">
+        <img
+          src="https://i.ytimg.com/vi/XBPAGBxXf_o/maxresdefault.jpg"
+          alt="Ne-Yo · Champagne & Roses Tour · UK 2024"
+          className="h-full w-full object-cover transition duration-500 group-hover/media:scale-[1.02]"
+          loading="lazy"
+        />
+
+        <div className="absolute inset-0 bg-black/20 transition group-hover/media:bg-black/10" />
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/65 text-lg text-white backdrop-blur-sm transition group-hover/media:scale-105">
+            ▶
+          </span>
+        </div>
+
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent p-5 pt-14">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#D4AF37]">
+            Champagne & Roses Tour · UK 2024
+          </p>
+
+          <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-white/65">
+            YouTube ↗
+          </p>
+        </div>
+      </div>
+    </a>
+  )}
                           {countrySlug === "portugal" &&
                             String(moment.year) === "2024" && (
                               <a
@@ -1058,6 +1095,33 @@ export default function CountryPage({
                           →
                         </span>
                       </a>
+          
+
+{fanPage.slug &&
+  (fanPage.profilePublished ||
+    process.env.NODE_ENV === "development") && (
+    <a
+      href={`/community/${countrySlug}/${fanPage.slug}`}
+      onClick={(event) => event.stopPropagation()}
+      className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D4AF37] transition hover:text-white"
+    >
+      {language === "PT"
+        ? "Explorar História"
+        : language === "ES"
+        ? "Explorar Historia"
+        : language === "FR"
+        ? "Explorer l’Histoire"
+        : language === "DE"
+        ? "Geschichte entdecken"
+        : language === "IT"
+        ? "Esplora la Storia"
+        : language === "JA"
+        ? "ストーリーを見る"
+        : "Explore Story"}
+      <span aria-hidden="true">→</span>
+    </a>
+  )}
+
                     </div>
 
                   </div>

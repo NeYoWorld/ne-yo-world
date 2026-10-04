@@ -65,13 +65,13 @@ const mobileStoryLabels: Record<Language, { read: string; less: string }> = {
 };
 
 const labels: Record<Language, any> = {
-  EN:{community:"Global Community",back:"Back to country",pageSince:"Fan page since",fanSince:"Fan since",story:"Our Story",why:"Why Ne-Yo?",journey:"My Journey with Ne-Yo",favorite:"Favorite Song",message:"A Message to Ne-Yo",follow:"Follow",instagram:"Visit Instagram",loading:"Loading profile...",missing:"Profile not found.",draft:"Local Draft Preview",createdBy:"Created by"},
-  PT:{community:"Comunidade Global",back:"Voltar ao país",pageSince:"Página desde",fanSince:"Fã desde",story:"A Nossa História",why:"Porquê Ne-Yo?",journey:"A Minha Jornada com Ne-Yo",favorite:"Música Favorita",message:"Uma Mensagem para Ne-Yo",follow:"Segue",instagram:"Visitar Instagram",loading:"A carregar perfil...",missing:"Perfil não encontrado.",draft:"Pré-visualização local",createdBy:"Criada por"},
-  ES:{community:"Comunidad Global",back:"Volver al país",pageSince:"Página desde",fanSince:"Fan desde",story:"Nuestra Historia",why:"¿Por qué Ne-Yo?",journey:"Mi Camino con Ne-Yo",favorite:"Canción Favorita",message:"Un Mensaje para Ne-Yo",follow:"Sigue a",instagram:"Visitar Instagram",loading:"Cargando perfil...",missing:"Perfil no encontrado.",draft:"Vista previa local",createdBy:"Creada por"},
-  FR:{community:"Communauté Mondiale",back:"Retour au pays",pageSince:"Page depuis",fanSince:"Fan depuis",story:"Notre Histoire",why:"Pourquoi Ne-Yo ?",journey:"Mon Parcours avec Ne-Yo",favorite:"Chanson Préférée",message:"Un Message pour Ne-Yo",follow:"Suivre",instagram:"Voir Instagram",loading:"Chargement...",missing:"Profil introuvable.",draft:"Aperçu local",createdBy:"Créée par"},
-  DE:{community:"Globale Gemeinschaft",back:"Zurück zum Land",pageSince:"Fanseite seit",fanSince:"Fan seit",story:"Unsere Geschichte",why:"Warum Ne-Yo?",journey:"Meine Reise mit Ne-Yo",favorite:"Lieblingssong",message:"Eine Nachricht an Ne-Yo",follow:"Folgen",instagram:"Instagram besuchen",loading:"Profil wird geladen...",missing:"Profil nicht gefunden.",draft:"Lokale Vorschau",createdBy:"Erstellt von"},
-  IT:{community:"Comunità Globale",back:"Torna al Paese",pageSince:"Pagina dal",fanSince:"Fan dal",story:"La Nostra Storia",why:"Perché Ne-Yo?",journey:"Il Mio Percorso con Ne-Yo",favorite:"Canzone Preferita",message:"Un Messaggio per Ne-Yo",follow:"Segui",instagram:"Visita Instagram",loading:"Caricamento...",missing:"Profilo non trovato.",draft:"Anteprima locale",createdBy:"Creata da"},
-  JA:{community:"グローバルコミュニティ",back:"国へ戻る",pageSince:"ファンページ開始",fanSince:"ファン歴",story:"私たちのストーリー",why:"なぜNe-Yo？",journey:"Ne-Yoとの歩み",favorite:"お気に入りの曲",message:"Ne-Yoへのメッセージ",follow:"フォロー",instagram:"Instagramを見る",loading:"読み込み中...",missing:"プロフィールが見つかりません。",draft:"ローカルプレビュー",createdBy:"作成者"}
+  EN:{community:"Global Community",back:"Back to country",pageSince:"Fan page since",fanSince:"Fan since",story:"Story",why:"Why Ne-Yo?",journey:"My Journey with Ne-Yo",favorite:"Favorite Song",message:"A Message to Ne-Yo",follow:"Follow",instagram:"Visit Instagram",loading:"Loading profile...",missing:"Profile not found.",draft:"Local Draft Preview",createdBy:"Created by"},
+  PT:{community:"Comunidade Global",back:"Voltar ao país",pageSince:"Página desde",fanSince:"Fã desde",story:"História",why:"Porquê Ne-Yo?",journey:"A Minha Jornada com Ne-Yo",favorite:"Música Favorita",message:"Uma Mensagem para Ne-Yo",follow:"Segue",instagram:"Visitar Instagram",loading:"A carregar perfil...",missing:"Perfil não encontrado.",draft:"Pré-visualização local",createdBy:"Criada por"},
+  ES:{community:"Comunidad Global",back:"Volver al país",pageSince:"Página desde",fanSince:"Fan desde",story:"Historia",why:"¿Por qué Ne-Yo?",journey:"Mi Camino con Ne-Yo",favorite:"Canción Favorita",message:"Un Mensaje para Ne-Yo",follow:"Sigue a",instagram:"Visitar Instagram",loading:"Cargando perfil...",missing:"Perfil no encontrado.",draft:"Vista previa local",createdBy:"Creada por"},
+  FR:{community:"Communauté Mondiale",back:"Retour au pays",pageSince:"Page depuis",fanSince:"Fan depuis",story:"Histoire",why:"Pourquoi Ne-Yo ?",journey:"Mon Parcours avec Ne-Yo",favorite:"Chanson Préférée",message:"Un Message pour Ne-Yo",follow:"Suivre",instagram:"Voir Instagram",loading:"Chargement...",missing:"Profil introuvable.",draft:"Aperçu local",createdBy:"Créée par"},
+  DE:{community:"Globale Gemeinschaft",back:"Zurück zum Land",pageSince:"Fanseite seit",fanSince:"Fan seit",story:"Geschichte",why:"Warum Ne-Yo?",journey:"Meine Reise mit Ne-Yo",favorite:"Lieblingssong",message:"Eine Nachricht an Ne-Yo",follow:"Folgen",instagram:"Instagram besuchen",loading:"Profil wird geladen...",missing:"Profil nicht gefunden.",draft:"Lokale Vorschau",createdBy:"Erstellt von"},
+  IT:{community:"Comunità Globale",back:"Torna al Paese",pageSince:"Pagina dal",fanSince:"Fan dal",story:"Storia",why:"Perché Ne-Yo?",journey:"Il Mio Percorso con Ne-Yo",favorite:"Canzone Preferita",message:"Un Messaggio per Ne-Yo",follow:"Segui",instagram:"Visita Instagram",loading:"Caricamento...",missing:"Profilo non trovato.",draft:"Anteprima locale",createdBy:"Creata da"},
+  JA:{community:"グローバルコミュニティ",back:"国へ戻る",pageSince:"ファンページ開始",fanSince:"ファン歴",story:"ストーリー",why:"なぜNe-Yo？",journey:"Ne-Yoとの歩み",favorite:"お気に入りの曲",message:"Ne-Yoへのメッセージ",follow:"フォロー",instagram:"Instagramを見る",loading:"読み込み中...",missing:"プロフィールが見つかりません。",draft:"ローカルプレビュー",createdBy:"作成者"}
 };
 
 const birminghamVideoLabels: Record<Language, { message: string; soSick: string }> = {
@@ -107,7 +107,24 @@ const neyoDivoPreview: FanPage = {
   creator_name: "Mary do Ne-Yo",
   source_language: "PT"
 };
-
+const missIndependentLWPreview: FanPage = {
+  id: "local-missindependentlw-preview",
+  application_id: null,
+  fan_page_name: "@missindependentlw",
+  username: "@missindependentlw",
+  country: "United Kingdom",
+  platform: "Instagram",
+  fan_page_link: "https://www.instagram.com/missindependentlw/",
+  created_year: "2026",
+  fan_since: "2005",
+  description: "Página de fãs de Ne-Yo no Reino Unido.",
+  favorite_song: null,
+  instagram_url: "https://www.instagram.com/missindependentlw/",
+  profile_image_url: "/missindependentlw-profile.jpg",
+  profile_is_published: true,
+  creator_name: "Miss Independent - Lisa",
+  source_language: "EN"
+};
 const neyoDivoTranslations: Translation[] = [
   {
     language:"PT",
@@ -159,7 +176,85 @@ const neyoDivoTranslations: Translation[] = [
     message_to_neyo:"Ne-Yo、私たちのつながりは、この人生だけのものではありません。"
   }
 ];
-
+const missIndependentLWTranslations: Translation[] = [
+  {
+    language: "EN",
+    profile_intro:
+      "A Ne-Yo fan since 2005, with that connection becoming even stronger by 2008. What began with “So Sick” and “Because of You” grew into something much more meaningful over the years.",
+    story:
+      "Been thinking about first becoming a Ne-Yo fan to now. The videos for “So Sick” and “Because of You” started it all, especially the clear MJ admiration there. “Miss Independent” and “Closer” were favourite songs and videos straight away. As a lifelong MJ fan, when he passed, I found it very hard to listen to any music. The following year, I watched a Ne-Yo performance on ITV2 UK and just loved it, and loved the MJ-style moments. Hearing all the things Ne-Yo said about Michael after he passed made me get more interested, and that got me enjoying music again. I just wanted to say thank you. Often in life, a person can have a deep impact just by doing what they do.",
+    why_neyo:
+      "His music means so much to me. It got me back into music, and I love his voice and style of singing. I don't think there's a day that goes by now without listening to Ne-Yo.",
+    message_to_neyo:
+      "Just to say thank you and keep doing what you do. And... come back to Newcastle soon."
+  },
+  {
+  language: "PT",
+  profile_intro:
+    "Fã de Ne-Yo desde 2005, com essa ligação a tornar-se ainda mais forte em 2008. O que começou com “So Sick” e “Because of You” transformou-se, ao longo dos anos, em algo muito mais significativo.",
+  story:
+    "Tenho pensado em como foi tornar-me fã de Ne-Yo e em todo o percurso até hoje. Os vídeos de “So Sick” e “Because of You” deram início a tudo, especialmente pela clara admiração por MJ que se via neles. “Miss Independent” e “Closer” tornaram-se imediatamente músicas e vídeos favoritos. Como fã de MJ desde sempre, quando ele faleceu, foi muito difícil para mim ouvir qualquer tipo de música. No ano seguinte, vi uma atuação de Ne-Yo no ITV2, no Reino Unido, e adorei, especialmente os momentos ao estilo de MJ. Ouvir tudo o que Ne-Yo disse sobre Michael depois da sua morte fez-me ficar ainda mais interessada e foi isso que me fez voltar a desfrutar da música. Só queria dizer obrigada. Muitas vezes, na vida, uma pessoa pode ter um impacto profundo simplesmente por fazer aquilo que faz.",
+  why_neyo:
+    "A música dele significa muito para mim. Fez-me voltar a desfrutar da música, e adoro a sua voz e a sua forma de cantar. Acho que hoje não passa um único dia sem ouvir Ne-Yo.",
+  message_to_neyo:
+    "Só quero dizer obrigada e continua a fazer aquilo que fazes. E... volta a Newcastle em breve."
+},
+{
+  language: "ES",
+  profile_intro:
+    "Fan de Ne-Yo desde 2005, con una conexión que se hizo aún más fuerte en 2008. Lo que comenzó con “So Sick” y “Because of You” se convirtió, con los años, en algo mucho más significativo.",
+  story:
+    "He estado pensando en cómo me convertí en fan de Ne-Yo y en todo el camino hasta hoy. Los vídeos de “So Sick” y “Because of You” fueron el comienzo de todo, especialmente por la clara admiración por MJ que se percibía en ellos. “Miss Independent” y “Closer” se convirtieron inmediatamente en canciones y vídeos favoritos. Como fan de MJ de toda la vida, cuando falleció me resultó muy difícil escuchar cualquier tipo de música. Al año siguiente vi una actuación de Ne-Yo en ITV2, en el Reino Unido, y me encantó, especialmente los momentos con el estilo de MJ. Escuchar todo lo que Ne-Yo dijo sobre Michael después de su muerte hizo que me interesara aún más y consiguió que volviera a disfrutar de la música. Solo quería decir gracias. Muchas veces en la vida, una persona puede tener un impacto profundo simplemente haciendo lo que hace.",
+  why_neyo:
+    "Su música significa muchísimo para mí. Hizo que volviera a disfrutar de la música, y me encantan su voz y su forma de cantar. Creo que ahora no pasa un solo día sin que escuche a Ne-Yo.",
+  message_to_neyo:
+    "Solo quiero decir gracias y que sigas haciendo lo que haces. Y... vuelve pronto a Newcastle."
+},
+{
+  language: "FR",
+  profile_intro:
+    "Fan de Ne-Yo depuis 2005, avec un lien qui s’est encore renforcé en 2008. Ce qui a commencé avec “So Sick” et “Because of You” est devenu, au fil des années, quelque chose de bien plus profond.",
+  story:
+    "J’ai beaucoup pensé à la façon dont je suis devenue fan de Ne-Yo et au chemin parcouru jusqu’à aujourd’hui. Les vidéos de “So Sick” et “Because of You” ont tout déclenché, notamment en raison de l’admiration évidente pour MJ que l’on pouvait y voir. “Miss Independent” et “Closer” sont immédiatement devenues des chansons et des vidéos favorites. Fan de MJ depuis toujours, lorsqu’il est décédé, j’ai eu beaucoup de mal à écouter de la musique. L’année suivante, j’ai regardé une performance de Ne-Yo sur ITV2 au Royaume-Uni et j’ai adoré, en particulier les moments dans le style de MJ. Entendre tout ce que Ne-Yo a dit sur Michael après sa disparition m’a donné envie de m’intéresser davantage à lui, et cela m’a permis de retrouver le plaisir d’écouter de la musique. Je voulais simplement dire merci. Souvent dans la vie, une personne peut avoir un impact profond simplement en faisant ce qu’elle fait.",
+  why_neyo:
+    "Sa musique représente énormément pour moi. Elle m’a permis de retrouver le plaisir de la musique, et j’adore sa voix et sa façon de chanter. Je ne pense pas qu’une seule journée passe désormais sans que j’écoute Ne-Yo.",
+  message_to_neyo:
+    "Je veux simplement te dire merci et continue à faire ce que tu fais. Et... reviens bientôt à Newcastle."
+},
+{
+  language: "DE",
+  profile_intro:
+    "Seit 2005 ein Fan von Ne-Yo, wobei diese Verbindung 2008 noch stärker wurde. Was mit “So Sick” und “Because of You” begann, entwickelte sich im Laufe der Jahre zu etwas viel Bedeutenderem.",
+  story:
+    "Ich habe darüber nachgedacht, wie ich zum ersten Mal Fan von Ne-Yo wurde und wie sich alles bis heute entwickelt hat. Die Videos zu “So Sick” und “Because of You” waren der Anfang von allem, besonders wegen der deutlich erkennbaren Bewunderung für MJ. “Miss Independent” und “Closer” gehörten sofort zu meinen Lieblingssongs und -videos. Als lebenslanger MJ-Fan fiel es mir nach seinem Tod sehr schwer, überhaupt Musik zu hören. Im folgenden Jahr sah ich einen Auftritt von Ne-Yo auf ITV2 im britischen Fernsehen und war begeistert, besonders von den Momenten im Stil von MJ. All die Dinge zu hören, die Ne-Yo nach Michaels Tod über ihn sagte, weckte mein Interesse noch mehr, und dadurch konnte ich Musik wieder genießen. Ich wollte einfach Danke sagen. Oft kann ein Mensch im Leben einen tiefen Einfluss haben, allein dadurch, dass er das tut, was er tut.",
+  why_neyo:
+    "Seine Musik bedeutet mir unglaublich viel. Durch ihn konnte ich Musik wieder genießen, und ich liebe seine Stimme und seinen Gesangsstil. Ich glaube, inzwischen vergeht kein Tag, an dem ich nicht Ne-Yo höre.",
+  message_to_neyo:
+    "Ich möchte einfach Danke sagen – und mach weiter mit dem, was du tust. Und... komm bald wieder nach Newcastle."
+},
+{
+  language: "IT",
+  profile_intro:
+    "Fan di Ne-Yo dal 2005, con un legame diventato ancora più forte nel 2008. Quello che è iniziato con “So Sick” e “Because of You” è diventato, nel corso degli anni, qualcosa di molto più significativo.",
+  story:
+    "Ho ripensato a quando sono diventata fan di Ne-Yo e a tutto il percorso fino a oggi. I video di “So Sick” e “Because of You” hanno dato inizio a tutto, soprattutto per la chiara ammirazione per MJ che si percepiva. “Miss Independent” e “Closer” sono diventate subito tra le mie canzoni e i miei video preferiti. Da fan di MJ da tutta la vita, quando è venuto a mancare ho trovato molto difficile ascoltare qualsiasi tipo di musica. L’anno seguente ho visto un’esibizione di Ne-Yo su ITV2 nel Regno Unito e l’ho adorata, soprattutto per i momenti nello stile di MJ. Sentire tutte le cose che Ne-Yo disse su Michael dopo la sua scomparsa mi spinse a interessarmi ancora di più a lui, e questo mi fece tornare ad apprezzare la musica. Volevo semplicemente dire grazie. Spesso nella vita una persona può avere un impatto profondo semplicemente facendo ciò che fa.",
+  why_neyo:
+    "La sua musica significa tantissimo per me. Mi ha fatto tornare ad amare la musica, e adoro la sua voce e il suo modo di cantare. Non credo che ormai passi un solo giorno senza che ascolti Ne-Yo.",
+  message_to_neyo:
+    "Voglio semplicemente dirti grazie e continua a fare quello che fai. E... torna presto a Newcastle."
+},
+{
+  language: "JA",
+  profile_intro:
+    "2005年からNe-Yoのファンで、そのつながりは2008年にさらに強くなりました。「So Sick」と「Because of You」から始まったものは、年月を重ねるうちに、私にとってさらに大きな意味を持つものになりました。",
+  story:
+    "Ne-Yoのファンになった最初の頃から今までのことを振り返っていました。すべての始まりは「So Sick」と「Because of You」のミュージックビデオでした。特に、そこに感じられたMJへの明らかな敬意に惹かれました。「Miss Independent」と「Closer」も、すぐに大好きな曲とビデオになりました。私はずっとMJのファンだったので、彼が亡くなったときは、どんな音楽を聴くこともとてもつらくなりました。その翌年、イギリスのITV2でNe-Yoのパフォーマンスを見て、本当に素晴らしいと思いました。特にMJを思わせる瞬間が大好きでした。Michaelが亡くなった後にNe-Yoが彼について語っていた言葉を聞き、Ne-Yoのことをもっと知りたいと思うようになりました。そして、それが私にもう一度音楽を楽しむ気持ちを取り戻させてくれました。ただ、ありがとうと伝えたいです。人生では、ただ自分のしていることを続けるだけで、誰かに深い影響を与えることがあります。",
+  why_neyo:
+    "彼の音楽は私にとって本当に大きな意味があります。もう一度音楽を楽しめるようにしてくれましたし、彼の声と歌い方が大好きです。今ではNe-Yoを聴かない日は一日もないと思います。",
+  message_to_neyo:
+    "ただ、ありがとうと伝えたいです。そして、これからもあなたらしく続けてください。それから…また近いうちにNewcastleに戻ってきてください。"
+}
+];
 const neyoDivoJourney: Journey[] = [
   {
     id:"local-neyodivo-2005", year:2005, event_date:null,
@@ -207,13 +302,156 @@ const neyoDivoJourney: Journey[] = [
     ]
   }
 ];
+const missIndependentLWJourney: Journey[] = [
+  {
+    id:"local-missindependentlw-2010",
+    year:2010,
+    event_date:null,
+    title:"Voltar a desfrutar da música",
+    description:"Uma atuação de Ne-Yo na ITV2, especialmente os momentos inspirados em Michael Jackson, ajudou Lisa a voltar a desfrutar da música e tornou a sua ligação a Ne-Yo ainda mais especial.",
+    display_order:1,
+    fan_page_journey_translations:[
+      {
+        language:"PT",
+        title:"Voltar a desfrutar da música",
+        description:"Uma atuação de Ne-Yo na ITV2, especialmente os momentos inspirados em Michael Jackson, ajudou Lisa a voltar a desfrutar da música e tornou a sua ligação a Ne-Yo ainda mais especial."
+      },
+      {
+        language:"EN",
+        title:"Enjoying music again",
+        description:"A Ne-Yo performance on ITV2, especially the moments inspired by Michael Jackson, helped Lisa enjoy music again and made her connection with Ne-Yo even more special."
+      },
+      {
+        language:"ES",
+        title:"Volver a disfrutar de la música",
+        description:"Una actuación de Ne-Yo en ITV2, especialmente los momentos inspirados en Michael Jackson, ayudó a Lisa a volver a disfrutar de la música e hizo que su conexión con Ne-Yo fuera aún más especial."
+      },
+      {
+        language:"FR",
+        title:"Retrouver le plaisir de la musique",
+        description:"Une performance de Ne-Yo sur ITV2, notamment les moments inspirés de Michael Jackson, a aidé Lisa à retrouver le plaisir de la musique et a rendu son lien avec Ne-Yo encore plus particulier."
+      },
+      {
+        language:"DE",
+        title:"Die Freude an der Musik wiederfinden",
+        description:"Ein Auftritt von Ne-Yo auf ITV2, besonders die von Michael Jackson inspirierten Momente, half Lisa dabei, wieder Freude an Musik zu finden, und machte ihre Verbindung zu Ne-Yo noch besonderer."
+      },
+      {
+        language:"IT",
+        title:"Ritrovare il piacere della musica",
+        description:"Un’esibizione di Ne-Yo su ITV2, in particolare i momenti ispirati a Michael Jackson, ha aiutato Lisa a ritrovare il piacere della musica e ha reso ancora più speciale il suo legame con Ne-Yo."
+      },
+      {
+        language:"JA",
+        title:"もう一度、音楽を楽しめるように",
+        description:"ITV2で見たNe-Yoのパフォーマンス、特にMichael Jacksonに影響を受けた場面は、Lisaが再び音楽を楽しむきっかけとなり、Ne-Yoとのつながりをさらに特別なものにしました。"
+      }
+    ]
+  },
 
+  {
+    id:"local-missindependentlw-2026-page",
+    year:2026,
+    event_date:null,
+    title:"Nasce @missindependentlw",
+    description:"Lisa criou a @missindependentlw como um scrapbook digital onde reúne fotografias, vídeos e memórias favoritas relacionadas com Ne-Yo.",
+    display_order:2,
+    fan_page_journey_translations:[
+      {
+        language:"PT",
+        title:"Nasce @missindependentlw",
+        description:"Lisa criou a @missindependentlw como um scrapbook digital onde reúne fotografias, vídeos e memórias favoritas relacionadas com Ne-Yo."
+      },
+      {
+        language:"EN",
+        title:"@missindependentlw begins",
+        description:"Lisa created @missindependentlw as a digital scrapbook where she brings together her favourite Ne-Yo photos, videos and memories."
+      },
+      {
+        language:"ES",
+        title:"Nace @missindependentlw",
+        description:"Lisa creó @missindependentlw como un álbum digital donde reúne sus fotos, vídeos y recuerdos favoritos relacionados con Ne-Yo."
+      },
+      {
+        language:"FR",
+        title:"Naissance de @missindependentlw",
+        description:"Lisa a créé @missindependentlw comme un album numérique où elle rassemble ses photos, vidéos et souvenirs préférés liés à Ne-Yo."
+      },
+      {
+        language:"DE",
+        title:"@missindependentlw entsteht",
+        description:"Lisa gründete @missindependentlw als digitales Sammelalbum für ihre Lieblingsfotos, Videos und Erinnerungen rund um Ne-Yo."
+      },
+      {
+        language:"IT",
+        title:"Nasce @missindependentlw",
+        description:"Lisa ha creato @missindependentlw come uno scrapbook digitale in cui raccoglie le sue foto, i suoi video e i suoi ricordi preferiti legati a Ne-Yo."
+      },
+      {
+        language:"JA",
+        title:"@missindependentlwの始まり",
+        description:"Lisaは、Ne-Yoにまつわるお気に入りの写真、動画、思い出を集めるデジタル・スクラップブックとして@missindependentlwを始めました。"
+      }
+    ]
+  },
+
+  {
+    id:"local-missindependentlw-2026-connection",
+    year:2026,
+    event_date:null,
+    title:"Uma ligação especial com Ne-Yo",
+    description:"Ser seguida por Ne-Yo no Instagram, receber likes nas suas publicações e interagir através das livestreams no Kick tornaram-se momentos muito especiais na jornada de Lisa como fã.",
+    display_order:3,
+    fan_page_journey_translations:[
+      {
+        language:"PT",
+        title:"Uma ligação especial com Ne-Yo",
+        description:"Ser seguida por Ne-Yo no Instagram, receber likes nas suas publicações e interagir através das livestreams no Kick tornaram-se momentos muito especiais na jornada de Lisa como fã."
+      },
+      {
+        language:"EN",
+        title:"A special connection with Ne-Yo",
+        description:"Being followed by Ne-Yo on Instagram, receiving likes on her posts and interacting through Kick livestreams became very special moments in Lisa’s journey as a fan."
+      },
+      {
+        language:"ES",
+        title:"Una conexión especial con Ne-Yo",
+        description:"Que Ne-Yo la siguiera en Instagram, recibir sus me gusta en las publicaciones e interactuar a través de los directos de Kick se convirtieron en momentos muy especiales en el recorrido de Lisa como fan."
+      },
+      {
+        language:"FR",
+        title:"Un lien particulier avec Ne-Yo",
+        description:"Être suivie par Ne-Yo sur Instagram, recevoir ses likes sur ses publications et interagir à travers les livestreams sur Kick sont devenus des moments très particuliers du parcours de Lisa en tant que fan."
+      },
+      {
+        language:"DE",
+        title:"Eine besondere Verbindung zu Ne-Yo",
+        description:"Dass Ne-Yo ihr auf Instagram folgte, ihre Beiträge likte und sie über die Livestreams auf Kick mit ihm interagieren konnte, wurde zu besonderen Momenten auf Lisas Reise als Fan."
+      },
+      {
+        language:"IT",
+        title:"Un legame speciale con Ne-Yo",
+        description:"Essere seguita da Ne-Yo su Instagram, ricevere i suoi like ai post e interagire attraverso le livestream su Kick sono diventati momenti molto speciali nel percorso di Lisa come fan."
+      },
+      {
+        language:"JA",
+        title:"Ne-Yoとの特別なつながり",
+        description:"Ne-Yo本人からInstagramでフォローされたこと、投稿に「いいね」をもらったこと、そしてKickのライブ配信を通じた交流は、Lisaのファンとしての歩みの中で特別な瞬間となりました。"
+      }
+    ]
+  }
+];
+   
 function isNeyoDivoSlug(slug:string){
   return slug==="neyodivo" || slug==="neyo-divo";
 }
 
 function isBestOfNeyoSlug(slug:string){
   return slug==="bestofneyo" || slug==="best-of-neyo";
+}
+
+function isMissIndependentLWSlug(slug:string){
+  return slug==="missindependentlw";
 }
 
 function countryToSlug(country:string){
@@ -256,25 +494,33 @@ export default function FanPageProfile({slug}:Props){
 
       if(!active)return;
       if(error){
-        if(isNeyoDivoSlug(slug)){
-          setPage(neyoDivoPreview);
-          setTranslations(neyoDivoTranslations);
-          setJourney(neyoDivoJourney);
-        }
-        setLoading(false);
-        return;
-      }
+  if(isNeyoDivoSlug(slug)){
+    setPage(neyoDivoPreview);
+    setTranslations(neyoDivoTranslations);
+    setJourney(neyoDivoJourney);
+  }else if(isMissIndependentLWSlug(slug)){
+    setPage(missIndependentLWPreview);
+    setTranslations(missIndependentLWTranslations);
+    setJourney(missIndependentLWJourney);
+  }
+  setLoading(false);
+  return;
+}
       if(!fp){
-        if(isNeyoDivoSlug(slug)){
-          setPage(neyoDivoPreview);
-          setTranslations(neyoDivoTranslations);
-          setJourney(neyoDivoJourney);
-        }else{
-          setPage(null);
-        }
-        setLoading(false);
-        return;
-      }
+  if(isNeyoDivoSlug(slug)){
+    setPage(neyoDivoPreview);
+    setTranslations(neyoDivoTranslations);
+    setJourney(neyoDivoJourney);
+  }else if(isMissIndependentLWSlug(slug)){
+    setPage(missIndependentLWPreview);
+    setTranslations(missIndependentLWTranslations);
+    setJourney(missIndependentLWJourney);
+  }else{
+    setPage(null);
+  }
+  setLoading(false);
+  return;
+}
 
       // Public safety gate:
       // profiles created from Join applications are never readable through a
@@ -301,8 +547,21 @@ export default function FanPageProfile({slug}:Props){
       if(!active)return;
       const dbTranslations=(tr.data??[]) as Translation[];
       const dbJourney=(jr.data??[]) as Journey[];
-      setTranslations(isNeyoDivoSlug(slug)?neyoDivoTranslations:dbTranslations);
-      setJourney(isNeyoDivoSlug(slug)?neyoDivoJourney:dbJourney);
+      setTranslations(
+  isNeyoDivoSlug(slug)
+    ? neyoDivoTranslations
+    : isMissIndependentLWSlug(slug)
+    ? missIndependentLWTranslations
+    : dbTranslations
+);
+
+setJourney(
+  isNeyoDivoSlug(slug)
+    ? neyoDivoJourney
+    : isMissIndependentLWSlug(slug)
+    ? missIndependentLWJourney
+    : dbJourney
+);
       setLoading(false);
     }
     load();
