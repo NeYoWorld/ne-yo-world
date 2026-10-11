@@ -271,6 +271,16 @@ const translations = {
 
 
 
+const messageNotice = {
+  EN: "Please note: Ne-Yo World is an independent fan project. There is no guarantee that Ne-Yo will see or read the messages shared here.",
+  PT: "Nota importante: Ne-Yo World é um projeto independente de fãs. Não é garantido que Ne-Yo veja ou leia as mensagens aqui partilhadas.",
+  ES: "Aviso importante: Ne-Yo World es un proyecto independiente de fans. No se garantiza que Ne-Yo vea o lea los mensajes compartidos aquí.",
+  FR: "Remarque importante : Ne-Yo World est un projet indépendant de fans. Rien ne garantit que Ne-Yo verra ou lira les messages partagés ici.",
+  DE: "Wichtiger Hinweis: Ne-Yo World ist ein unabhängiges Fanprojekt. Es gibt keine Garantie, dass Ne-Yo die hier geteilten Nachrichten sieht oder liest.",
+  IT: "Nota importante: Ne-Yo World è un progetto indipendente dei fan. Non è garantito che Ne-Yo veda o legga i messaggi condivisi qui.",
+  JA: "ご注意：Ne-Yo Worldは独立したファンプロジェクトです。ここで共有されたメッセージをNe-Yo本人が見たり読んだりする保証はありません。",
+} as const;
+
 const countryCodes = [
   "AF","AL","DZ","AD","AO","AG","AR","AM","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BZ","BJ","BT","BO","BA","BW","BR","BN","BG","BF","BI",
   "CV","KH","CM","CA","CF","TD","CL","CN","CO","KM","CG","CD","CR","CI","HR","CU","CY","CZ","DK","DJ","DM","DO","EC","EG","SV","GQ","ER","EE",
@@ -887,9 +897,17 @@ export default function MessagesPage() {
 
             </div>
 
+          
           </form>
 
+          <div className="mt-5 rounded-xl border border-[#D4AF37]/20 bg-[#D4AF37]/[0.04] px-5 py-4 text-center">
+            <p className="text-xs leading-6 text-white/55">
+              {messageNotice[language]}
+            </p>
+          </div>
+
         </div>
+
 
       </section>
 

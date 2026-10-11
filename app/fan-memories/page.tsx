@@ -273,6 +273,17 @@ const COPY: Record<string, any> = {
   },
 };
 
+
+const memoryNotice: Record<string, string> = {
+  EN: "Please note: Ne-Yo World is an independent fan project. There is no guarantee that Ne-Yo will see or read the memories shared here.",
+  PT: "Nota importante: Ne-Yo World é um projeto independente de fãs. Não é garantido que Ne-Yo veja ou leia as memórias aqui partilhadas.",
+  ES: "Aviso importante: Ne-Yo World es un proyecto independiente de fans. No se garantiza que Ne-Yo vea o lea los recuerdos compartidos aquí.",
+  FR: "Remarque importante : Ne-Yo World est un projet indépendant de fans. Rien ne garantit que Ne-Yo verra ou lira les souvenirs partagés ici.",
+  DE: "Wichtiger Hinweis: Ne-Yo World ist ein unabhängiges Fanprojekt. Es gibt keine Garantie, dass Ne-Yo die hier geteilten Erinnerungen sieht oder liest.",
+  IT: "Nota importante: Ne-Yo World è un progetto indipendente dei fan. Non è garantito che Ne-Yo veda o legga i ricordi condivisi qui.",
+  JA: "ご注意：Ne-Yo Worldは独立したファンプロジェクトです。ここで共有された思い出をNe-Yo本人が見たり読んだりする保証はありません。",
+};
+
 const COUNTRIES = [
   ["PT", "Portugal"], ["BR", "Brazil"], ["US", "United States"], ["GB", "United Kingdom"],
   ["ES", "Spain"], ["FR", "France"], ["DE", "Germany"], ["IT", "Italy"], ["JP", "Japan"],
@@ -819,6 +830,13 @@ export default function FanMemoriesPage() {
                 </div>
               </form>
             )}
+
+             <div className="mt-5 rounded-xl border border-[#D4AF37]/20 bg-[#D4AF37]/[0.04] px-5 py-4 text-center">
+                <p className="text-xs leading-6 text-white/55">
+                  {memoryNotice[lang] || memoryNotice.EN}
+                </p>
+              </div>
+              
           </div>
         </div>
       </section>
