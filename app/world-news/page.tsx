@@ -11,6 +11,9 @@ type Lang = "EN" | "PT" | "ES" | "FR" | "DE" | "IT" | "JA";
 type Category = "all" | "music" | "live" | "interview" | "announcement";
 
 const FEATURED_YOUTUBE_VIDEO_ID = "xRkGjTsABj4";
+const DINGO_YOUTUBE_VIDEO_ID = "g1unFK_aq2I";
+const SONGWRITERS_IMAGE_URL =
+  "https://d4ln1n73rozgf.cloudfront.net/prod/assets/NeYo.png";
 
 type Translation = {
   language: Lang;
@@ -366,7 +369,27 @@ export default function WorldNewsPage() {
     };
   }, []);
 
+  const isSongwritersStory = (item: NewsRow) => {
+    const searchableText = [
+      item.source_name,
+      item.source_url,
+      ...(item.world_news_translations || []).flatMap((entry) => [
+        entry.title,
+        entry.summary,
+      ]),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return (
+      searchableText.includes("songwriters hall of fame") ||
+      searchableText.includes("songwriters hall") ||
+      searchableText.includes("compositores") && searchableText.includes("2027")
+    );
+  };
+
   const featured =
+    news.find(isSongwritersStory) ||
     news.find((item) => item.source_url.includes(FEATURED_YOUTUBE_VIDEO_ID)) ||
     news[0] ||
     null;
@@ -411,19 +434,6 @@ export default function WorldNewsPage() {
             {t.eyebrow}
           </p>
 
-          <h1 className="mt-5 max-w-[900px] text-5xl font-black leading-[0.98] tracking-[-0.045em] md:text-6xl">
-            <span className="block text-white">{t.title1}</span>
-            <span className="mt-2 block text-[#D4AF37]">{t.title2}</span>
-          </h1>
-
-          <p className="mt-7 max-w-[760px] text-[15px] leading-7 text-white/55 md:text-base">
-            {t.intro}
-          </p>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 lg:px-10 lg:py-20">
-        <div className="mx-auto max-w-[1180px]">
           {loading ? (
             <div className="rounded-[22px] border border-white/[0.07] bg-[#08090A] p-10 text-center text-sm text-white/40">
               {t.loading}
@@ -465,6 +475,21 @@ export default function WorldNewsPage() {
                         <p className="text-[10px] uppercase tracking-[0.16em] text-white/35">
                           {featured.source_name}
                         </p>
+                      </div>
+                    </div>
+                  ) : isSongwritersStory(featured) ? (
+                    <div className="relative h-full min-h-[270px] bg-black lg:min-h-[410px]">
+                      <img
+                        src={SONGWRITERS_IMAGE_URL}
+                        alt="Ne-Yo — Songwriters Hall of Fame 2027 nominee"
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                        loading="eager"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
+                      <div className="absolute bottom-0 left-0 p-6 lg:p-8">
+                        <span className="rounded-full border border-[#D4AF37]/50 bg-black/55 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+                          2027 · Performing Songwriters
+                        </span>
                       </div>
                     </div>
                   ) : (
@@ -521,7 +546,7 @@ export default function WorldNewsPage() {
         </div>
       </section>
 
-      {!loading && !loadError && news.length > 1 && (
+       {!loading && !loadError && news.length > 1 && (
         <section className="border-y border-[#D4AF37]/10 bg-[#08090A]/55 px-6 py-16 lg:px-10 lg:py-20">
           <div className="mx-auto max-w-[1180px]">
             <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
@@ -579,6 +604,21 @@ export default function WorldNewsPage() {
                           {formatDate(item.event_date || item.published_at, lang)}
                         </span>
                       </div>
+
+                      {item.source_url.includes(DINGO_YOUTUBE_VIDEO_ID) && (
+                        <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-black">
+                          <div className="aspect-video w-full">
+                            <iframe
+                              className="h-full w-full"
+                              src={`https://www.youtube-nocookie.com/embed/${DINGO_YOUTUBE_VIDEO_ID}`}
+                              title={translation.title}
+                              loading="lazy"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                            />
+                          </div>
+                        </div>
+                      )}
 
                       <h3 className="mt-6 text-xl font-bold leading-[1.25] tracking-[-0.025em] text-white">
                         {translation.title}
