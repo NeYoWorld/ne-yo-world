@@ -605,12 +605,17 @@ export default function WorldNewsPage() {
                         </span>
                       </div>
 
-                      {item.source_url.includes(DINGO_YOUTUBE_VIDEO_ID) && (
+                      {(item.source_url.includes(DINGO_YOUTUBE_VIDEO_ID) ||
+  item.source_url.includes(FEATURED_YOUTUBE_VIDEO_ID)) && (
                         <div className="mt-5 overflow-hidden rounded-xl border border-white/10 bg-black">
                           <div className="aspect-video w-full">
                             <iframe
                               className="h-full w-full"
-                              src={`https://www.youtube-nocookie.com/embed/${DINGO_YOUTUBE_VIDEO_ID}`}
+                              src={`https://www.youtube-nocookie.com/embed/${
+  item.source_url.includes(DINGO_YOUTUBE_VIDEO_ID)
+    ? DINGO_YOUTUBE_VIDEO_ID
+    : FEATURED_YOUTUBE_VIDEO_ID
+}`}
                               title={translation.title}
                               loading="lazy"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
